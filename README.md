@@ -19,6 +19,26 @@ Cuando está en curso un juego pueden seguir llegando niños, pero se quedan con
 
 El tiempo que tarda un niño en leer el mensaje y anotarlo en su pizarra es de 1 minuto. Lo mismo al inicio (el tiempo de Sara) y al final (el tiempo que le toma al último niño el ir a la pizarra y escribirlo).
 
+
+
 ## Reto base
 
-- Simule esto
+- Simule esto.
+
+### Se valorará
+
+- Exactitud en la simulación.
+- Adecuado reparto de responsabilidades.
+- Claridad del código.
+- Código limpio.
+- Gestión de estados.
+- Y, por supuesto, el uso de los temas vistos en clase.
+
+### Se propone/sugiere
+
+|||
+|-|-|
+Planificación| Planifique su enfoque antes de empezar a codificar. Esto puede incluir la creación de diagramas de clases o pseudocódigo. Lo puede aportar en su repo, enlazado desde el README.md
+Documentación|En dicho README.md puede explicar cómo cada parte contribuye a la simulación general del juego.
+Reflexión sobre delegación de responsabilidades|Pensar bien sobre cómo asignaron responsabilidades a diferentes clases/objetos y cómo esto afecta la claridad y eficiencia del código.
+
