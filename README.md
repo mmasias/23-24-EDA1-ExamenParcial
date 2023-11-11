@@ -1,4 +1,4 @@
-<img src="imagenes/DALL·E 2023-11-11 12.20.21 - A comic-style illustration of five children sitting in a row from left to right. The first child on the left, a girl, has long black hair and is whisp.png" align=right width=40%>
+<img src="imagenes/DALL·E 2023-11-11 12.20.21 - A comic-style illustration of five children sitting in a row from left to right. The first child on the left, a girl, has long black hair and is whisp.png" align=right width=40% border=1>
 
 # Telefono descacharrado
 
