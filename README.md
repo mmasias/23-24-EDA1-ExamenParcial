@@ -6,7 +6,7 @@ Las monitoras Lidia y Sara han organizado una ludoteca a la que asisten varios n
 
 Entre los juegos tienen una versión muy particular del popular juego del teléfono descacharrado, el cual sigue las reglas que se indican a continuación:
 
-Para empezar, cuando abren la ludoteca, Lidia es la encargada de recibir a los niños. Conforme llegan (y llegan, durante los primeros 10 minutos, hasta dos niños por minuto, y los siguientes 20 minutos, un niño cada 3 a 5 minutos) se los pasa a Aisha que va formando una fila, poniendo a los niños que recibe al final de la misma y dándole un pizarrin a cada uno de ellos. Cuando la fila tiene más de 5 niños, Aisha empieza a jugar:
+Para empezar, cuando abren la ludoteca, Lidia es la encargada de recibir a los niños. Conforme llegan (y estos llegan, durante los primeros 10 minutos entre cero y dos niños por minuto, y los siguientes 20 minutos, un niño cada 3 a 5 minutos) se los pasa a Aisha que va formando una fila, poniendo a los niños que recibe al final de la misma y dándole un pizarrin a cada uno de ellos. Cuando la fila tiene más de 5 niños, Aisha empieza a jugar:
 
 - Para empezar, limpia la pizarra del salón y les pide a los niños que limpien sus pizarrines.
 - Luego de esto, escribe un texto de 10 letras en un pizarrín y se lo muestra al primer niño de la cola.
@@ -19,18 +19,23 @@ Cuando está en curso un juego pueden seguir llegando niños, pero se quedan con
 
 El tiempo que tarda un niño en leer el mensaje y anotarlo en su pizarra es de 1 minuto. Lo mismo al inicio (el tiempo de Sara) y al final (el tiempo que le toma al último niño el ir a la pizarra y escribirlo).
 
+## Retos
 
+Los indicados en el documento base.
 
-## Reto base
+### Se debe entregar
 
-- Simule esto.
+- Carpeta /src con código fuente ordenado.
+- Archivo README.md en el directorio raiz.
+- Carpeta /images con archivos de imágenes (si los considera necesarios). Use el formato .svg para diagramas y png para imágenes.
+- Documentos extra en la carpeta /documentos.
 
 ### Se valorará
 
 - Exactitud en la simulación.
 - Adecuado reparto de responsabilidades.
-- Claridad del código.
 - Código limpio.
+- Claridad del código.
 - Gestión de estados.
 - Y, por supuesto, el uso de los temas vistos en clase.
 
