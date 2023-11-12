@@ -21,29 +21,8 @@ El tiempo que tarda un niño en leer el mensaje y anotarlo en su pizarra es de 1
 
 ## Retos
 
-Los indicados en el documento base.
+- Simule este escenario.
 
 ### Se debe entregar
 
-- Carpeta /src con código fuente ordenado.
-- Archivo README.md en el directorio raiz.
-- Carpeta /images con archivos de imágenes (si los considera necesarios). Use el formato .svg para diagramas y png para imágenes.
-- Documentos extra en la carpeta /documentos.
-
-### Se valorará
-
-- Exactitud en la simulación.
-- Adecuado reparto de responsabilidades.
-- Código limpio.
-- Claridad del código.
-- Gestión de estados.
-- Y, por supuesto, el uso de los temas vistos en clase.
-
-### Se propone/sugiere
-
-|||
-|-|-|
-Planificación| Planifique su enfoque antes de empezar a codificar. Esto puede incluir la creación de diagramas de clases o pseudocódigo. Lo puede aportar en su repo, enlazado desde el README.md
-Documentación|En dicho README.md puede explicar cómo cada parte contribuye a la simulación general del juego.
-Reflexión sobre delegación de responsabilidades|Pensar bien sobre cómo asignaron responsabilidades a diferentes clases/objetos y cómo esto afecta la claridad y eficiencia del código.
-
+- Lo indicado en el documento base.
