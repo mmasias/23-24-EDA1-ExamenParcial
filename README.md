@@ -2,11 +2,11 @@
 
 # Telefono descacharrado
 
-Las monitoras Lidia y Aisha han organizado una ludoteca a la que asisten varios niños, entre ellos varios sobrinos de Lidia.
+Las monitoras Lydia y Aisha han organizado una ludoteca a la que asisten varios niños, entre ellos varios sobrinos de Lidia.
 
 Entre los juegos tienen una versión muy particular del popular juego del teléfono descacharrado, el cual sigue las reglas que se indican a continuación:
 
-Para empezar, cuando abre la ludoteca, Lidia es la encargada de recibir a los niños. Conforme llegan, Lidia se los pasa a Aisha, la que va formando una fila, colocando a los niños que recibe al final de la misma y dándole un pizarrin a cada uno de ellos. 
+Para empezar, cuando abre la ludoteca, Lydia es la encargada de recibir a los niños. Conforme llegan, se los pasa a Aisha que va formando una fila, colocando a los niños que recibe al final de la misma y dándole un pizarrin a cada uno de ellos. 
 
 Cuando la fila tiene más de 5 niños, Aisha empieza a jugar:
 
