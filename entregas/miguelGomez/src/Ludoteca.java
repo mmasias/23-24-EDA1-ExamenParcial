@@ -1,65 +1,64 @@
-public class Ludoteca{
-    
-    double probabilidadllegada;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Ludoteca {
+    double probabilidadLlegada;
     double Minuto = 1.0 / 60.0;
     double HoraAbrir, HoraCerrar;
     boolean Abierto;
     double hora;
-    
-    Ludoteca(){
+
+    Ludoteca() {
         HoraAbrir = 0.0;
         HoraCerrar = 2.0;
         hora = HoraAbrir;
-        Abierto= hora <= HoraCerrar ? true : false;
-
-
+        Abierto = hora <= HoraCerrar;
     }
 
-    public void Recibe(){
-        while( Abierto == true){
-            if (hora <=(1.0/6.0)){
-                probabilidadllegada = 1;
-            } else if (hora > (1.0/6.0) && hora < (2.0/6.0)){
-                probabilidadllegada = 0.5;
-            } else if (hora > 2.0/6.0){
-                probabilidadllegada = 0;
-            }
-            Boolean Lleganninos = Math.random() < probabilidadllegada ? true : false;
-            if (Lleganninos = true && hora <= (1.0/6.0))
-            {
-                int Numeroninosllegan = (int) (Math.random() * 2);
-                if (Numeroninosllegan == 0){
+    public void Recibe() {
+        Lidia lidia = new Lidia();
+        Aisha aisha = new Aisha();
+        List<Nino> fila = new ArrayList<>();
 
-                }
-                else if (Numeroninosllegan == 1){
-                    String Nombre = NombresNinos();
-                System.out.println("Llega el niño " + Nombre);
-                }
-                else if (Numeroninosllegan == 2){
-                    String Nombre1 = NombresNinos();
-                    String Nombre2 = NombresNinos();
-                System.out.println("Llegan los niños " + Nombre1 + " y " + Nombre2);
-                }
-                
+        while (Abierto) {
+            if (hora <= (1.0 / 6.0)) {
+                probabilidadLlegada = 1;
+            } else if (hora > (1.0 / 6.0) && hora < (2.0 / 6.0)) {
+                probabilidadLlegada = 0.5;
+            } else if (hora > 2.0 / 6.0) {
+                probabilidadLlegada = 0;
             }
-            else if (Lleganninos = true && (hora > (1.0/6.0) && hora < (2.0/6.0) )){
-                if(hora % (3.0/6.0)==0 && Lleganninos == true){
-                     String Nombre = NombresNinos();
-                    System.out.println("Llega el niño " + Nombre);
+
+            boolean lleganNinos = Math.random() < probabilidadLlegada;
+            if (lleganNinos && hora <= (1.0 / 6.0)) {
+                int numeroNinosLlegan = (int) (Math.random() * 2) + 1;
+                if (numeroNinosLlegan == 1) {
+                    System.out.println("Llega el niño " + NombresNinos());
+                } else {
+                    System.out.println("Llegan los niños " + NombresNinos() + " y " + NombresNinos());
                 }
-            }
-            else if (hora > (2.0/6.0)){
+            } else if (lleganNinos && (hora > (1.0 / 6.0) && hora < (2.0 / 6.0))) {
+                if (hora % (3.0 / 6.0) == 0) {
+                    System.out.println("Llega el niño " + NombresNinos());
+                }
+            } else if (hora > (2.0 / 6.0)) {
                 System.out.println("No llegan más niños");
             }
-            
-            hora = hora + Minuto;
-            Abierto= hora <= HoraCerrar ? true : false;
+
+            hora += Minuto;
+            Abierto = hora <= HoraCerrar;
             System.out.println(hora);
             System.out.println(Minuto);
+
+            if (Abierto && fila.size() > 5) {
+                aisha.jugar(fila);
+            }
         }
     }
+
     private String NombresNinos() {
-        String[] nombres = { "Zarco Aldunate", "Electra Natchios", "Orion Pax", "Magnus Robot Fighter", "Indiana Solo",
+        String[] nombres = {"Zarco Aldunate", "Electra Natchios", "Orion Pax", "Magnus Robot Fighter", "Indiana Solo",
                 "Carmen Sandiego", "Mario Bros", "Lara Craft", "Tyrion Spacewalker", "Leia Organa", "Apollo Creed",
                 "Han Skywalker", "Marty McFly", "Ellen Ripley", "Sarah Connor", "Tony Stark", "Bruce Wayne",
                 "Clark Kent", "Peter Parker", "Logan Howlett", "Natasha Romanoff", "Scott Summers", "Jean Grey",
@@ -83,11 +82,11 @@ public class Ludoteca{
                 "Ecthelion Lord", "Feanor Spiritoffire", "Fingolfin Highking", "Finrod Faithful", "Glorfindel Golden",
                 "Maedhros Tall", "Maglor Singer", "Celebrimbor Silverhand", "Théoden King", "Théodred Prince",
                 "Éomer Marshal", "Éowyn Lady", "Gríma Wormtongue", "Háma Guard", "Ioreth Healer", "Imrahil Prince",
-                "Denethor Steward", "Beregond Guard", "Damrod Ranger" };
+                "Denethor Steward", "Beregond Guard", "Damrod Ranger"};
         return nombres[(int) (Math.random() * nombres.length)];
     }
-        public static void main(String[] args) {
-            new Ludoteca().Recibe();
 
+    public static void main(String[] args) {
+        new Ludoteca().Recibe();
     }
 }
