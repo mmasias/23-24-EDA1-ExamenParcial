@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Ludoteca {
     double probabilidadLlegada;
@@ -21,7 +20,9 @@ public class Ludoteca {
         Aisha aisha = new Aisha();
         List<Nino> fila = new ArrayList<>();
 
+        System.out.println("Se abre la ludoteca.");
         while (Abierto) {
+            System.out.println("Hora: " + hora);
             if (hora <= (1.0 / 6.0)) {
                 probabilidadLlegada = 1;
             } else if (hora > (1.0 / 6.0) && hora < (2.0 / 6.0)) {
@@ -33,31 +34,32 @@ public class Ludoteca {
             boolean lleganNinos = Math.random() < probabilidadLlegada;
             if (lleganNinos && hora <= (1.0 / 6.0)) {
                 int numeroNinosLlegan = (int) (Math.random() * 2) + 1;
-                if (numeroNinosLlegan == 1) {
-                    System.out.println("Llega el niño " + NombresNinos());
-                } else {
-                    System.out.println("Llegan los niños " + NombresNinos() + " y " + NombresNinos());
+                for (int i = 0; i < numeroNinosLlegan; i++) {
+                    fila.add(new Nino(nombresNinos()));
+                    System.out.println("Llega el niño " + fila.get(fila.size() - 1).getNombre());
                 }
             } else if (lleganNinos && (hora > (1.0 / 6.0) && hora < (2.0 / 6.0))) {
                 if (hora % (3.0 / 6.0) == 0) {
-                    System.out.println("Llega el niño " + NombresNinos());
+                    fila.add(new Nino(nombresNinos()));
+                    System.out.println("Llega el niño " + fila.get(fila.size() - 1).getNombre());
                 }
             } else if (hora > (2.0 / 6.0)) {
-                System.out.println("No llegan más niños");
+                System.out.println("No llegan más niños.");
             }
 
             hora += Minuto;
             Abierto = hora <= HoraCerrar;
-            System.out.println(hora);
-            System.out.println(Minuto);
 
-            if (Abierto && fila.size() > 5) {
-                Aisha.jugar(fila);
+            if (Abierto && fila.size() >= 5) {
+                List<Nino> ninosEnJuego = new ArrayList<>(fila.subList(0, 5));
+                aisha.jugar(ninosEnJuego);
+                fila.removeAll(ninosEnJuego);
             }
         }
+        System.out.println("Se cierra la ludoteca.");
     }
 
-    private String NombresNinos() {
+    private String nombresNinos() {
         String[] nombres = {"Zarco Aldunate", "Electra Natchios", "Orion Pax", "Magnus Robot Fighter", "Indiana Solo",
                 "Carmen Sandiego", "Mario Bros", "Lara Craft", "Tyrion Spacewalker", "Leia Organa", "Apollo Creed",
                 "Han Skywalker", "Marty McFly", "Ellen Ripley", "Sarah Connor", "Tony Stark", "Bruce Wayne",
@@ -83,7 +85,7 @@ public class Ludoteca {
                 "Maedhros Tall", "Maglor Singer", "Celebrimbor Silverhand", "Théoden King", "Théodred Prince",
                 "Éomer Marshal", "Éowyn Lady", "Gríma Wormtongue", "Háma Guard", "Ioreth Healer", "Imrahil Prince",
                 "Denethor Steward", "Beregond Guard", "Damrod Ranger"};
-        return nombres[(int) (Math.random() * nombres.length)];
+                return nombres[(int) (Math.random() * nombres.length)];
     }
 
     public static void main(String[] args) {
