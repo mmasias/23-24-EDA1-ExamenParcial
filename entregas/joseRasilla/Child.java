@@ -32,6 +32,9 @@ public class Child {
         //Se lo enseña al siguiente niño
         //Si es ultimo niño lo escribe en Ludoteca Pizarra
 
+    public void runToBoard(Board board){
+        board.writeBoard(getWord());
+    }
 
 
 
