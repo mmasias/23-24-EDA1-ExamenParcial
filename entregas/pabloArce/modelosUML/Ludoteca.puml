@@ -1,0 +1,91 @@
+@startuml ExamenParcial
+
+class Ludoteca {
+  - timeLimit: Integer
+  - currentTime: Integer
+  - isPlaying: boolean
+  - lidia: Lidia
+  - aisha: Aisha
+
+  + Ludoteca()
+  + startGame(): void
+  - isTimeUp(): boolean
+  - isChildrenComing(currentTime: int): void
+  - canWeStartPlaying(): void
+  - displayCurrentTime(): void
+  - currentTimeToString(): void
+}
+
+class Lidia {
+  - childrenWaiting: Queue<Children>
+  - aisha: Aisha
+
+  + Lidia(aisha: Aisha)
+  + handleChildren(isPlaying: boolean, children: Children): void
+  + incorporateChildrenToGame(): void
+  - putChildrenWait(children: Children): void
+  - welcomeChildren(children: Children): void
+}
+
+class Aisha {
+  - childrenPlaying: Queue<Children>
+
+  + Aisha()
+  + getChildrenList(): Queue<Children>
+  + watchChildrenPlaying(): void
+}
+
+class Children {
+  - givenWord: String
+  - blackBoardWord: String
+
+  + writeWord(word: String): void
+  + editGivenWord(): void
+  + readWord(): String
+}
+
+package Utils {
+  class Node<T> {
+    - data: T
+    - next: Node<T>
+    
+    + Node(data: T)
+    + getData(): T
+    + setData(data: T): void
+    + getNext(): Node<T>
+    + setNext(next: Node<T>): void
+    + count(): int
+  }
+
+  class Queue implements IDataStructure {
+    - head: Node<T>
+    - tail: Node<T>
+    
+    + Queue()
+    + enqueue(data: T): void
+    + dequeue(): T
+    + isEmpty(): boolean
+    + peek(end: int): T
+    + size(): int
+    + listData(): void
+  }
+
+  interface IDataStructure<T> {
+    + isEmpty(): boolean
+    + size(): int
+    + listData(): void
+  }
+}
+
+Ludoteca --> Lidia
+Ludoteca --> Aisha
+
+Lidia --> Queue
+Lidia --> Aisha
+
+Aisha --> Queue
+
+Queue --> Node
+Queue ..> IDataStructure
+
+@enduml
