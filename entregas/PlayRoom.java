@@ -14,21 +14,22 @@ public class PlayRoom {
         this.chalkBoard = new ChalkBoard();
     }
 
-    private int arrivedChilds(){
+    private int arrivedChilds() {
         int numberOfChilds = 0;
-        if(this.actualMinute <= 10){
-            numberOfChilds = (int)Math.floor(Math.random() * (2 - 0 + 1) + 0);
+        if (this.actualMinute <= 10) {
+            numberOfChilds = (int) Math.floor(Math.random() * (2 - 0 + 1) + 0);
+            return numberOfChilds;
         }
-        if(this.actualMinute > 10 && this.actualMinute <= 30){
+        if (this.actualMinute > 10 && this.actualMinute <= 30) {
             this.minuteCharge++;
-            if(minuteCharge == 3){
+            if (minuteCharge == 3) {
                 minuteCharge = 0;
-                numberOfChilds = (int) ;
-                if () {
-                    
+                if (Math.floor(Math.random()) * 100 <= 50) {
+                    return 1;
                 }
             }
         }
+        return 0;
     }
 
 }
