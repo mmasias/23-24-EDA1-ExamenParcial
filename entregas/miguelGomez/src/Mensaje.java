@@ -8,8 +8,4 @@ public class Mensaje {
     public String getContenido() {
         return contenido;
     }
-
-    public void mostrarContenido() {
-        System.out.println("Mensaje: " + contenido);
-    }
 }

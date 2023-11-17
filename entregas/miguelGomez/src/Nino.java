@@ -1,10 +1,10 @@
 public class Nino {
-    private String pizarrin;
     private String nombre;
+    private String pizarrin;
 
     public Nino(String nombre) {
-        this.pizarrin = "";
         this.nombre = nombre;
+        this.pizarrin = "";
     }
 
     public String getNombre() {
@@ -20,12 +20,12 @@ public class Nino {
     }
 
     public void recibirMensaje(Mensaje mensaje) {
-        this.pizarrin = mensaje.getContenido();
-        System.out.println(nombre + " recibe el mensaje: " + this.pizarrin);
+        System.out.println(nombre + " recibe el mensaje: " + mensaje.getContenido());
+        pizarrin = mensaje.getContenido();
     }
 
-    public void mostrarMensaje(Nino siguienteNino) {
-        siguienteNino.recibirMensaje(new Mensaje(this.pizarrin));
-        System.out.println(nombre + " muestra el mensaje: " + this.pizarrin);
+    public void mostrarMensaje(Nino ninoAnterior) {
+        System.out.println(nombre + " muestra el mensaje: " + ninoAnterior.getPizarrin());
+        pizarrin = ninoAnterior.getPizarrin();
     }
 }
