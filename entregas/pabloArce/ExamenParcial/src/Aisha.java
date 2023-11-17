@@ -23,40 +23,39 @@ public class Aisha {
         return this.childrenPlaying;
     }
 
-    public void kidsPlaying(){
-        SysOut("Aisha tiene " + this.childrenPlaying.size() + " niños jugando\n");
+    public int numberOfKidsPlaying(){
+        return this.childrenPlaying.size();
     }
 
-    public void play(){
-        cleanBlackboard();
-        writeOnBlackboard();
-        SysOut("Como empezo la palabra: " + blackboard + "\n");
-        Queue<Children> gameQueueStarted = childrenPlaying;
-        Children lastChildren = null;
-        for (int i= 0; i < this.childrenPlaying.size(); i++){
-            if (lastChildren == null){
-                lastChildren = gameQueueStarted.peek(1);
-                lastChildren.writeWord(readBlackboard());
-            } else {
-                gameQueueStarted.peek(1).writeWord(lastChildren.readWord());
-                lastChildren = gameQueueStarted.peek(1);
-            }
-            lastChildren.editGivenWord();
-            if (!(gameQueueStarted.size() == 1)){
-                gameQueueStarted.dequeue();
-            }
+    public void play(int turn){
+        Children actualChildren = this.childrenPlaying.getNodeData(turn);
+        if (turn == 0){
+            cleanBlackboard();
+            writeOnBlackboard();
+            SysOut("Como empezo la palabra: " + blackboard + "\n");
+            actualChildren.listenWord(this.readBlackboard());
         }
-        blackboard = lastChildren.readWord();
-        SysOut("Como acabo la palabra: " + blackboard + "\n");
+        else if (turn + 1 == this.numberOfKidsPlaying()){
+            this.writeOnBlackboard(actualChildren.readWord());
+            SysOut("Como acabo la palabra: " + blackboard + "\n");
+        } else {
+            Children lastChildren = this.childrenPlaying.getNodeData(turn-1);
+            actualChildren.listenWord(lastChildren.readWord());
+            SysOut("Los niños estan jugando\n");
+        }
     }
 
     private void writeOnBlackboard(){
         Random random = new Random();
         int randomIndex = random.nextInt(WORDS.length);
-        this.blackboard = WORDS[randomIndex];
+        String word = WORDS[randomIndex];
+        writeOnBlackboard(word);
+    }
+    private void writeOnBlackboard(String word) {
+        this.blackboard = word;
     }
 
-    private String readBlackboard(){
+        private String readBlackboard(){
         return this.blackboard;
     }
 

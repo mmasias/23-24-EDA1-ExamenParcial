@@ -1,5 +1,7 @@
 import Utils.Queue;
 
+import static Utils.Utils.SysOut;
+
 public class Lidia {
     private Queue<Children> childrenWaiting;
     private Aisha aisha;
@@ -18,14 +20,17 @@ public class Lidia {
     }
 
     public void incorporateChildrenToGame(){
+        if (this.childrenWaiting.isEmpty()) return;
+
         for (int i = 0; i < this.childrenWaiting.size(); i++) {
             Children children = this.childrenWaiting.dequeue();
             this.aisha.getChildrenList().enqueue(children);
+            SysOut("Lidia añade a los niños esperando!\n");
         }
     }
 
     private void putChildrenWait(Children children){
-        this.childrenWaiting.enqueue(new Children());
+        this.childrenWaiting.enqueue(children);
     }
     private void welcomeChildren(Children children){
         this.aisha.getChildrenList().enqueue(children);

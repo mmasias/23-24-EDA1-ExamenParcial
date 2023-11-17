@@ -46,16 +46,28 @@ public class Queue<T> implements IDataStructure<T> {
         return null;
     }
 
+    public T getNodeData(int index) {
+        Node<T> currentNode = head;
+        int currentIndex = 0;
+
+        while (currentNode != null && currentIndex < index) {
+            currentNode = currentNode.getNext();
+            currentIndex++;
+        }
+
+        if (currentNode != null) {
+            return currentNode.getData();
+        } else {
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
+        }
+    }
+
     @Override
     public int size() {
         int count = 0;
-        Node<T> current = head;
-
-        while (current != null) {
-            count++;
-            current = current.getNext();
+        if (head != null){
+            count = head.count();
         }
-
         return count;
     }
 

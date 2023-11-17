@@ -15,19 +15,31 @@ public class Ludoteca {
         this.lidia = new Lidia(this.aisha);
     }
 
-    public void startGame(){
+    public void startSession(){
+        spacing();
+        int turn = 0;
+
         while(!isTimeUp()){
             this.displayCurrentTime();
             this.isChildrenComing(this.currentTime);
-            this.canWeStartPlaying();
-            if (isPlaying){
-                SysOut("Aisha comienza a jugar!\n");
-                aisha.kidsPlaying();
-                this.aisha.play();
-            } else {
-                SysOut("Lidia añade a los niños esperando!\n");
+            if (!isPlaying){
                 this.lidia.incorporateChildrenToGame();
             }
+            this.canWeStartPlaying();
+            if (isPlaying){
+                if (turn == 0){
+                    SysOut("Aisha comienza a jugar!\n");
+                    SysOut("Aisha tiene " + aisha.numberOfKidsPlaying() + " niño/s jugando\n");
+                }
+                this.aisha.play(turn);
+                if (this.aisha.numberOfKidsPlaying() == turn + 1){
+                    SysOut("Aisha termina de jugar!\n");
+                    this.isPlaying = false;
+                    turn = -1;
+                }
+                turn++;
+            }
+            spacing();
         }
     }
     private boolean isTimeUp(){
@@ -46,6 +58,7 @@ public class Ludoteca {
         for (int i = 0; i < numChildren; i++) {
             this.lidia.handleChildren(this.isPlaying, new Children());
         }
+        SysOut("Entran " + numChildren + " niños\n");
     }
 
     private void canWeStartPlaying(){
@@ -61,14 +74,22 @@ public class Ludoteca {
         SysOut("\n");
         this.currentTime++;
     }
-    private void currentTimeToString(){
-        Integer minutes = this.currentTime / 60;
-        Integer seconds = this.currentTime % 60;
-        SysOut(minutes + ":" + seconds);
+    private void spacing(){
+        SysOut("= ".repeat(20));
+        SysOut("\n");
     }
+    private void currentTimeToString() {
+        int hours = (this.currentTime / 60 + 16) % 24; // 16:00 empiezan a jugar
+        int minutes = this.currentTime % 60;
+
+        String formattedTime = String.format("%02d:%02d", hours, minutes);
+
+        System.out.println(formattedTime);
+    }
+
     
     public static void main(String[] args) {
         Ludoteca ludoteca = new Ludoteca();
-        ludoteca.startGame();
+        ludoteca.startSession();
     }
 }

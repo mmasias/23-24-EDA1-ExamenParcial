@@ -4,11 +4,11 @@ public class Children {
     private String givenWord;
     private String blackBoardWord;
 
-    public void writeWord(String word) {
+    public void listenWord(String word) {
         this.givenWord = word;
     }
 
-    public void editGivenWord() {
+    public void writeWordOnBlackboard() {
         if (givenWord != null && !givenWord.isEmpty()) {
             Random random = new Random();
             int numChanges = random.nextInt(3);
