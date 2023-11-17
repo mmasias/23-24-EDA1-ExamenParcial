@@ -41,7 +41,8 @@ public class Aisha {
         } else {
             Children lastChildren = this.childrenPlaying.getNodeData(turn-1);
             actualChildren.listenWord(lastChildren.readWord());
-            SysOut("Los niños estan jugando\n");
+            SysOut("Los niños estan jugando...\n");
+            SysOut("(Aisha escucha: " + actualChildren.readWord() + ")\n");
         }
     }
 

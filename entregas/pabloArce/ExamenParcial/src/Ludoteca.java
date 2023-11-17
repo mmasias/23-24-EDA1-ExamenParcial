@@ -38,6 +38,8 @@ public class Ludoteca {
                     turn = -1;
                 }
                 turn++;
+            } else {
+                SysOut("Aisha no puede empezar porque no hay suficientes niños...\n");
             }
             spacing();
         }
@@ -58,7 +60,9 @@ public class Ludoteca {
         for (int i = 0; i < numChildren; i++) {
             this.lidia.handleChildren(this.isPlaying, new Children());
         }
-        SysOut("Entran " + numChildren + " niños\n");
+        if (numChildren > 0) {
+            SysOut("Entran " + numChildren + " niños\n");
+        }
     }
 
     private void canWeStartPlaying(){

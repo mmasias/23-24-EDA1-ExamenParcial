@@ -6,6 +6,7 @@ public class Children {
 
     public void listenWord(String word) {
         this.givenWord = word;
+        writeWordOnBlackboard();
     }
 
     public void writeWordOnBlackboard() {
