@@ -1,56 +1,79 @@
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Ludoteca {
-    private Monitor monitor;
-    private int tiempoTranscurrido;
 
-    public Ludoteca() {
-        this.monitor = new Monitor();
-        this.tiempoTranscurrido = 0;
+class ludoteca {
+    private monitora lidia;
+    private monitora aisha;
+    private List<niño> niñosEnLudoteca;
+    private boolean juegoEnCurso;
+    private pizarra pizarra;
+
+    public ludoteca(monitora lidia, monitora aisha) {
+        this.lidia = lidia;
+        this.aisha = aisha;
+        this.niñosEnLudoteca = new ArrayList<>();
+        this.juegoEnCurso = false;
+        this.pizarra = new pizarra();
     }
 
-    public void simularDosHoras() {
-        Random random = new Random();
-        boolean juegoIniciado = false;
+    public void abrir() {
+        System.out.println("¡Bienvenidos a la Ludoteca!");
 
-        int tiempoActual; // Mueve la declaración aquí
+        for (int minutos = 0; minutos < 120; minutos++) {
+       
 
-        for (tiempoActual = 1; tiempoActual <= 120; tiempoActual++) {
-            System.out.println("\nMinuto " + tiempoActual + ":");
-
-            boolean llegaNiñoEnMinuto = false;
-
-            if (tiempoActual <= 10) {
-                llegaNiñoEnMinuto = random.nextDouble() < 0.5;
-            } else if (tiempoActual <= 30) {
-                llegaNiñoEnMinuto = tiempoActual % 3 == 1 && random.nextDouble() < 0.5;
-            }
-
-            if (tiempoActual <= 30) {
-                if (llegaNiñoEnMinuto) {
-                    monitor.recibirNiño(new Niño());
-                } else {
-                    System.out.println("No llega ningún niño.");
-                }
-            }
-    
-            // Si hay al menos 5 niños, inicia el juego
-            if (!juegoIniciado && monitor.getColaNiños().getSize() >= 5) {
-                tiempoTranscurrido = tiempoActual; // Actualiza tiempoTranscurrido
-                monitor.iniciarJuego(tiempoTranscurrido);
-                juegoIniciado = true;
-            }
-    
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (niñosEnLudoteca.size() >= 5 && !juegoEnCurso) {
+                aisha.formarFila(niñosEnLudoteca);
+                aisha.iniciarJuego(pizarra, niñosEnLudoteca);
+                juegoEnCurso = true;
             }
         }
     }
 
-    public static void main(String[] args) {
-        Ludoteca ludoteca = new Ludoteca();
-        ludoteca.simularDosHoras();
+    public void simularJuego() {
+        int tiempoTranscurrido = 0;
+
+        while (tiempoTranscurrido < 120) {
+            if (juegoEnCurso) {
+                aisha.jugar(pizarra);
+                if (!aisha.isJuegoEnCurso()) {
+                    lidia.mantenerNiños(niñosEnLudoteca);
+                    niñosEnLudoteca.clear();
+                    juegoEnCurso = false;
+                }
+            } else {
+                if (tiempoTranscurrido < 10 || (tiempoTranscurrido >= 10 && tiempoTranscurrido < 30 && Math.random() < 0.5)) {
+                    int cantidadNiños = (int) (Math.random() * 3);
+                    for (int i = 0; i < cantidadNiños; i++) {
+                        niño nuevoNiño = new niño("Niño" + (niñosEnLudoteca.size() + 1));
+                        niñosEnLudoteca.add(nuevoNiño);
+                        lidia.recibirNiño(nuevoNiño);
+                    }
+                }
+
+                if (tiempoTranscurrido % 3 == 0 && tiempoTranscurrido >= 30) {
+                    int cantidadNiños = Math.random() < 0.5 ? 1 : 0;
+                    for (int i = 0; i < cantidadNiños; i++) {
+                        niño nuevoNiño = new niño("Niño" + (niñosEnLudoteca.size() + 1));
+                        niñosEnLudoteca.add(nuevoNiño);
+                        lidia.recibirNiño(nuevoNiño);
+                    }
+                }
+
+                if (niñosEnLudoteca.size() >= 5) {
+                    aisha.formarFila(niñosEnLudoteca);
+                    aisha.iniciarJuego(pizarra,niñosEnLudoteca);
+                    juegoEnCurso = true;
+                }
+            }
+
+            tiempoTranscurrido++;
+        }
+        pizarra.mostrarMensajes();
     }
-}
+
+    public void cerrar() {
+        System.out.println("¡La Ludoteca cierra! Gracias por jugar.");
+    }
+    }

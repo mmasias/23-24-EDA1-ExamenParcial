@@ -1,43 +1,23 @@
-import java.util.Random;
-public class Pizarra {
-    private String mensaje;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Pizarra() {
-        this.mensaje = "";
+class pizarra {
+    private List<String> mensajes;
+
+    public pizarra() {
+        this.mensajes = new ArrayList<>();
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public void agregarMensaje(String mensaje) {
+        mensajes.add(mensaje);
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public void deformarMensaje() {
-        Random random = new Random();
-        StringBuilder mensajeModificado = new StringBuilder(this.mensaje);
-
-        for (int i = 0; i < this.mensaje.length(); i++) {
-            char letra = this.mensaje.charAt(i);
-
-            // Deformar el mensaje cambiando una o dos letras
-            if (random.nextDouble() < 0.2) { // 20% de probabilidad de cambiar la letra
-                // Cambiar una letra
-                letra = (char) (random.nextInt(26) + 'A');
-
-                // Con 50% de probabilidad, cambiar otra letra
-                if (random.nextDouble() < 0.5) {
-                    int posicionAleatoria = random.nextInt(this.mensaje.length());
-                    char nuevaLetra = (char) (random.nextInt(26) + 'A');
-                    mensajeModificado.setCharAt(posicionAleatoria, nuevaLetra);
-                }
-            }
-
-            // Actualizar la letra deformada
-            mensajeModificado.setCharAt(i, letra);
+    public void mostrarMensajes() {
+        System.out.println("Mensajes en la pizarra:");
+        for (String mensaje : mensajes) {
+            System.out.println("- " + mensaje);
         }
-
-        this.mensaje = mensajeModificado.toString();
     }
 }
+
+    
