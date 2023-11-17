@@ -1,5 +1,7 @@
 package entregas.joseRasilla;
 
+import java.util.Random;
+
 public class Child {
     public String word;
     public Child nexChild;
@@ -10,7 +12,14 @@ public class Child {
     }
 
     public String modifiedWord(String originalWord){
-        return originalWord;
+        char[] newword = originalWord.toCharArray();
+        Random r = new Random();
+        int randomIndex = r.nextInt((5 - 0) + 1);
+        int range = r.nextInt(26);
+        char charleatory = (char) (range + 'A');
+        newword[randomIndex] = charleatory;
+
+        return new String(newword);
     }
 
     public String getWord(){
