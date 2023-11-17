@@ -52,7 +52,7 @@ public class Ludoteca {
             System.out.println(Minuto);
 
             if (Abierto && fila.size() > 5) {
-                aisha.jugar(fila);
+                Aisha.jugar(fila);
             }
         }
     }
