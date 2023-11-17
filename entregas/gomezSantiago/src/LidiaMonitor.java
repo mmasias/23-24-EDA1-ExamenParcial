@@ -1,22 +1,21 @@
 public class LidiaMonitor {
-    private ChildRow lidiaChildrenRow;
-
+    private ChildrenRow childrenRowInLidia;
     private AishaMonitor aishaMonitor;
 
     public LidiaMonitor(AishaMonitor aishaMonitor){
-        this.lidiaChildrenRow = new ChildRow();
+        this.childrenRowInLidia = new ChildrenRow();
         this.aishaMonitor = aishaMonitor;
     }
 
-    public void addChildrenInQueue(){
-        if (!aishaMonitor.isAishaPlaying()){
-            aishaMonitor.addChildrenInQueueAisha();
+    public void addChildrenInQueueLidia(ChildNode child){
+        if(!aishaMonitor.isAishaPlaying()){
+            aishaMonitor.addChildrenInRowAisha(child);
         } else {
-            lidiaChildrenRow.addChildToQueue();
+            childrenRowInLidia.addChildrenToQueue(child);
         }
     }
 
     public int childrenInQueueLidia(){
-        return lidiaChildrenRow.size();
+        return childrenRowInLidia.size();
     }
 }
