@@ -18,16 +18,14 @@ public class Ludotec {
             currentChild = firstChild;
             childCount++;
             childPlaying++;
-        }
-
-        if (childPlaying<5 && childPlaying>=1) {
+        }else if (childPlaying<5 && childPlaying>=1) {
             currentChild.setChild(new Child(currentChild.getWord()));
             currentChild = currentChild.getNextChild();
             childCount++;
             childPlaying++; 
         } else if(childPlaying == 5){
-            childCount++;
             startGame(currentChild);
+            childCount++;
         } else childCount++;
     }
 
@@ -50,22 +48,23 @@ public class Ludotec {
         System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
         System.out.println("+-+-+-+-+- GAME  ENDED +--+-+-+-+");
         System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
-        childCount -=5;
         childPlaying = 0;
+        childCount = childCount - 5;
         while(childCount>0 && childPlaying<5) {
             if (childPlaying==0) {
                 firstChild = new Child(initialWord);
                 currentChild = firstChild;
                 childPlaying++;
+                childCount--;
             }
             if (childPlaying<5) {
-            currentChild.setChild(new Child(currentChild.getWord()));
-            currentChild = currentChild.getNextChild();
-            childPlaying++; 
+                currentChild.setChild(new Child(currentChild.getWord()));
+                currentChild = currentChild.getNextChild();
+                childPlaying++; 
+                childCount--;
             } else if(childPlaying == 5){
             startGame(currentChild);
             }
-            childCount--;
         }
     }
 
@@ -77,8 +76,16 @@ public class Ludotec {
         System.out.println("##### LUDOTEC IS NOW OPEN ######");
         System.out.println("################################");
     }
+    public void closeLudotec(){
+        System.out.println("################################");
+        System.out.println("#### LUDOTEC IS NOW CLOSED #####");
+        System.out.println("################################");
+    }
 
     public void passMinute(){
+        if (childCount<0) {
+            childCount = 0;
+        }
         System.out.println("There are " + childCount + " children waiting");
         System.out.println("There are " + childPlaying + " children on the line");
 

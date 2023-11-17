@@ -23,6 +23,7 @@ public class Monitor {
             }
             ludotec.passMinute();
         }while (ludotec.clock<30);
+        ludotec.closeLudotec();
     }
 
 
