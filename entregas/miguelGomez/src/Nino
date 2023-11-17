@@ -1,0 +1,13 @@
+Public class Nino{
+    private int numeroLetras = 10;
+    private String nombre;
+
+    Public Nino(){
+        nombre = NombresNinos();
+        Mensaje
+    }
+
+    public void Mensaje(){
+        System.out.println("Le toca al niño " + nombre + que entendió +);
+    }
+}
