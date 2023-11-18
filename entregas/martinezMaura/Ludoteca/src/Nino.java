@@ -27,5 +27,8 @@ public class Nino {
     public String getNombre() {
         return null;
     }
+
+    public void setMensaje(String mensaje2) {
+    }
 }
 
