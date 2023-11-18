@@ -1,0 +1,43 @@
+@startuml Ludoteca
+
+package Ludoteca.src {
+    class SimulacionLudoteca {
+        + main(String[] args): void
+    }
+
+    class  Ludoteca {
+        - cola: List<Nino>
+        - aisha: Aisha
+        - tiempoTotal: int
+        - tiempoTranscurrido: int
+        + simular(): void
+        + llegadaDeNinos(): void
+    }
+
+    class Aisha {
+        + jugar(cola: List<Nino>): void
+    }
+
+    class Lidia {
+        - listaNinos: List<Nino>
+        - aisha: Aisha
+        + recibirNino(nino: Nino): void
+        + llegadaDeNNuevosNinos(): void
+    }
+
+    class Nino {
+        - mensaje: String
+        + Nino()
+        + getMensaje(): String
+        + generarMensajeAleatorio(): void
+        + getNombre(): String
+    }
+}
+
+SimulacionLudoteca --> Ludoteca
+Ludoteca --> Aisha
+Ludoteca --> Lidia
+Lidia --> Nino
+Aisha --> Nino
+
+@enduml
