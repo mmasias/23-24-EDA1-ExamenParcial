@@ -14,5 +14,9 @@ public class ChalkBoard {
         this.message = message;
     }
 
+    public boolean chalkBoardClean(){
+        return (this.message.length() == 0);
+    }
+
     
 }
