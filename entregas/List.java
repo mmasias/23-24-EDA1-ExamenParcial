@@ -40,7 +40,7 @@ class List<T> {
             while (iterator.getNext() != null) {
                 iterator = iterator.getNext();
             }
-            iterator.setNext(iterator);
+            iterator.setNext(newNode);
         }
     }
 
@@ -62,19 +62,19 @@ class List<T> {
         return iterator;
     }
 
-    public T[] listAll() {
-        T[] list = (T[]) new Object[this.size()];
-        Node<T> iterator = this.first;
-        if (iterator == null) {
-            return list;
-        }
-        int count = 0;
-        while (iterator != null) {
-            list[count] = iterator.getValue();
-            count++;
-            iterator = iterator.getNext();  
-        }
-        return list;
-    }
+    // public T[] listAll() {
+    //     T[] list = (T[]) new Object[this.size()];
+    //     Node<T> iterator = this.first;
+    //     if (iterator == null) {
+    //         return list;
+    //     }
+    //     int count = 0;
+    //     while (iterator != null) {
+    //         list[count] = iterator.getValue();
+    //         count++;
+    //         iterator = iterator.getNext();  
+    //     }
+    //     return list;
+    // }
 
 }
