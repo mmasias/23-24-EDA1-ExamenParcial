@@ -14,7 +14,11 @@ public class ChalkBoard {
         this.message = message;
     }
 
-    public boolean chalkBoardClean(){
+    public void cleanChalkBoard(){
+        this.message = "";
+    }
+
+    public boolean isChalkBoardClean(){
         return (this.message.length() == 0);
     }
 
