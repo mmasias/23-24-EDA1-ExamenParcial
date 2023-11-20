@@ -1,9 +1,18 @@
 public class Child {
 
-    ChalkBoard chalkBoard;
+    private ChalkBoard chalkBoard;
+    boolean isPlaying;
 
     public Child() {
+        
+    }
 
+    public void writeInPlayRoomChalkBoard(ChalkBoard playRoomChalkBoard,String message){
+        playRoomChalkBoard.setMessage(message);
+    }
+
+    public void writeInChalkBoard(String message){
+        this.chalkBoard.setMessage(message);
     }
 
     public ChalkBoard getChalkBoard() {
