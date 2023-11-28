@@ -1,23 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+class Pizarra {
+    private String mensaje;
 
-class pizarra {
-    private List<String> mensajes;
-
-    public pizarra() {
-        this.mensajes = new ArrayList<>();
+    public Pizarra() {
+        this.mensaje = "";
     }
 
-    public void agregarMensaje(String mensaje) {
-        mensajes.add(mensaje);
+    public void escribirMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
-    public void mostrarMensajes() {
-        System.out.println("Mensajes en la pizarra:");
-        for (String mensaje : mensajes) {
-            System.out.println("- " + mensaje);
-        }
+    public String leerMensaje() {
+        return this.mensaje;
+    }
+
+    public void limpiar() {
+        this.mensaje = "";
+    }
+
+    public boolean pizarraLimpia() {
+        return mensaje.length() <= 0;
     }
 }
-
-    
