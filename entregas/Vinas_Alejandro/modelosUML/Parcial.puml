@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+class Aisha extends Monitora{
+
++String pirarrin
+-String[] abecedario
+-boolean partidainiciada
+-boolean partidaterminada
++Aisha()
++setAbecedario(String[] abecedario)
++getAbecedario()
++isPartidainiciada()
++pasaNino(Nino nin)
++escribePizarrin()
++entraNino(Nino nin)
++pasapizarraNino()
++setPartidaTerminada(boolean res)
++getPartidaTerminada()
++vaciaCola()
+}
+class Inicio{
++main(String[] args)
+}
+class Nino{
++String nombre
++String[] abecedario
++String textopizarrain
++String textopizarraout
++String pizarrin
+Aisha aisha
++Nino(String nombr)
++getNombre()
+-modificaletras()
++getTextopizarrain()
++setTextopizarrain(String textopizarrain)
++getTextopizarraout()
++setTextopizarraout(String textopizarraout)
++getPizarrin()
++setPizarrin(String pizarrin)
++limpiapizarrin()
++recibetexto(String textopizarrin)
++escribepizarron()
+}
+class Monitora{
++List<Nino> ninos
++String nombre
++Monitora(String nombr)
++setNinos(List<Nino> ninos)
++getNinos()
++getNombre()
++setNombre(String nombre)
++entraNino(Nino nin)
++dameLista()
+}
+class ludoteca{
+Monitora lidia
+Aisha aysa
++Ludoteca()
++abreLudoteca()
+-cuentaNin()
+-gestionaNoLlegaNino()
+-gestionaLlegaNino(int numninosminuto, int k)
+-dimeNumNinosLlegan(int i)
+
+}
+@enduml
