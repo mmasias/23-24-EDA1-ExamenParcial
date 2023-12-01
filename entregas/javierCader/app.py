@@ -11,6 +11,8 @@ class App:
         self.monitorFactory = MonitorFactory()
 
     def run(self):
+        ludoteca_monitors = self.monitorFactory.createMonitors()
+        self.ludoteca.employMonitors(ludoteca_monitors)
         self.ludoteca.open()
         
         while self.ludoteca.is_open():

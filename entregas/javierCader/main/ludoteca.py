@@ -6,7 +6,7 @@ from main.game import Game
 class Ludoteca:
     def __init__(self):
         self.isOpen = False
-        self.monitors = [Monitor("Lydia"), Monitor("Aisha")]
+        self.monitors = None
         self.game = Game()
 
     def open(self):
@@ -17,6 +17,9 @@ class Ludoteca:
         
     def is_open(self):
         return self.isOpen
+    
+    def employMonitors(self, monitors):
+        self.monitors = monitors
 
     def manageKidsArrival(self, kid):
         if not self.isOpen:
