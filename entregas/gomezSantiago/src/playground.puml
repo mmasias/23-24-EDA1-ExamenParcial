@@ -1,0 +1,107 @@
+@startuml
+
+class Node<T> {
+  - element: T
+  - nextNode: Node<T>
+  + Node(T)
+  + getElement(): T
+  + setElement(T)
+  + getNextNode(): Node<T>
+  + setNextNode(Node<T>)
+  + count(): int
+}
+
+class Child {
+  - name: String
+  + chalkboard: Blackboard
+  + Child(String)
+  + receiveChalkboard(Blackboard)
+  + getName(): String
+  + receiveMessage(String)
+  + modifyMessage(String): String
+  + showMessage(): String
+  + clearChalkboard()
+}
+
+class List<T> {
+  - head: Node<T>
+  + insert(T, int): List<T>
+  + remove(int): List<T>
+  + getHead(): Node<T>
+  + isEmpty(): boolean
+  + size(): int
+  + listData(): Object[]
+}
+
+class Queue {
+  - children: List<Child>
+  - childrenInQueue: int
+  + Queue()
+  + enqueueChild(Child)
+  + dequeueChild(): Child
+  + hasChildren(): boolean
+  + numberOfChildren(): int
+  + size(): int
+  + getChildren(): List<Child>
+  + listChildren()
+}
+
+class Monitor {
+  - name: String
+  - childQueue: Queue
+  - isPlaying: boolean
+  - currentChild: Child
+  + chalkboard: Blackboard
+  + Monitor(String)
+  + receiveChild(Child, Blackboard)
+  + hasChildren(): boolean
+  + canStartGame(): boolean
+  + isGaming(): boolean
+  + displayChildList()
+  + startGame()
+  + progressGame()
+  + transferChildren(Monitor)
+  - clearChalkboards()
+  - enqueueChild(Child)
+}
+
+class Blackboard {
+  - message: String
+  + Blackboard()
+  + writeMessage(String)
+  + readMessage(): String
+  + clear()
+  + isClean(): boolean
+}
+
+class Playground {
+  - lidia: Monitor
+  - aisha: Monitor
+  - mainBlackboard: Blackboard
+  + Playground()
+  + welcomeChild(Child)
+  + updatePlayroom()
+  + manageQueues()
+  + showCurrentState()
+}
+
+class World {
+  - playroom: Playground
+  - totalMinutes: int
+  + World(Playground, int)
+  + startSimulation()
+  - childArrives(): boolean
+  - generateChild(): Child
+  - inventName(): String
+}
+
+Monitor *-- Child
+Monitor *-- Blackboard
+Child *-- Blackboard
+Queue *-- List
+List *-- Node
+Node *-- Child
+Playground *-- Monitor
+World *-- Playground
+
+@enduml
