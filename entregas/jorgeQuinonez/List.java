@@ -11,6 +11,10 @@ public class List {
     return this.size() > 0 ? false : true;
   }
 
+  public Niño getFirst() {
+    return this.first;
+  }
+
   public void insertEnd(String value) {
     Niño lastKid = new Niño(value);
     if (this.first == null) {

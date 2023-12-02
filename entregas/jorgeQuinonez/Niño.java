@@ -20,16 +20,16 @@ public class Niño {
   System.out.println("Recibe [" + message + "] y ha escrito [" + this.showMessage(); + "]");
  }
 
+ public void recievePizarrin(Pizarra pizarrin) {
+  this.pizarrin = pizarrin;
+ }
+
  public Niño getNext() {
   return next;
  }
 
  public void setNext(Niño next) {
   this.next = next;
- }
-
- public void recievePizarrin(Pizarra pizarrin) {
-  this.pizarrin = pizarrin;
  }
 
  public String showMessage() {
