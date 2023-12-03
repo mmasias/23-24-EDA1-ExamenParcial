@@ -1,4 +1,4 @@
-package entregas;
+package entregas.mejoraClase;
 
 public class Lydia implements Monitora {
     private Monitora siguienteMonitora;

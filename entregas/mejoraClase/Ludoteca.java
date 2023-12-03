@@ -1,4 +1,4 @@
-package entregas;
+package entregas.mejoraClase;
 
 import java.util.Random;
 

@@ -1,4 +1,6 @@
-package entregas;
+package entregas.mejoraClase;
+
+import entregas.mejoraClase.MensajeDeformable;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package propuestaFinal;
+package entregas.propuestaFinal;
 
 import java.util.Random;
 

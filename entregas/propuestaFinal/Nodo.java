@@ -1,4 +1,4 @@
-package propuestaFinal;
+package entregas.propuestaFinal;
 
 public class Nodo {
     Niño niño;

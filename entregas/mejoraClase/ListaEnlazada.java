@@ -1,4 +1,4 @@
-package entregas;
+package entregas.mejoraClase;
 
 public class ListaEnlazada<T> {
     Nodo<T> cabeza;

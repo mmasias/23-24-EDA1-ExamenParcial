@@ -1,4 +1,4 @@
-package entregas;
+package entregas.mejoraClase;
 
 public class Aisha implements Monitora {
     private ListaEnlazada<Niño> fila = new ListaEnlazada<>();
