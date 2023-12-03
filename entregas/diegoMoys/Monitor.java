@@ -1,3 +1,5 @@
+import java.util.Random;
+
 class Monitor {
     private String nombre;
     private Cola colaNiños;
@@ -50,7 +52,7 @@ class Monitor {
             estaJugando = true;
             limpiarPizarrines();
             niñoTurno = colaNiños.getNiños().getFirst();
-            niñoTurno.getData().recibirMensaje("ABCDEFGHIJKLM");
+            niñoTurno.getData().recibirMensaje(generarMensajeAleatorio());
         } else {
             Node<Niño> niño = colaNiños.getNiños().getFirst();
             while (niño != niñoTurno) {
@@ -67,7 +69,23 @@ class Monitor {
             }
         }
     }
+    private String generarMensajeAleatorio() {
+        Random random = new Random();
+        String word = generarPalabraAleatorio(random);
 
+        while (word.length() <= 10) {
+            word = generarPalabraAleatorio(random);
+        }
+    
+        return word;
+    }
+
+    private String generarPalabraAleatorio(Random random) {
+        String words[] = {"escritura", "confianza", "actividad", "celebridad", "convocator", 
+                        "generosidad", "influencia", "observador", "proporcion", "television"};
+        int randomIndex = random.nextInt(words.length);
+        return words[randomIndex];
+    }
     private void limpiarPizarrines() {
         Node<Niño> niño = colaNiños.getNiños().getFirst();
         while (niño != null) {
