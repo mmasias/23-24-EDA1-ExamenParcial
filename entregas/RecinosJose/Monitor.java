@@ -29,9 +29,13 @@ class Monitor {
     }
 
     public void mostrarListaNiños() {
-        System.out.print("> " + this.nombre + " ---> ");
-        colaNiños.listaNiños();
-        System.out.println();
+        if (tieneNiños()) {
+            System.out.print("> " + this.nombre + " ---> "); //Acá si Lydia no tiene ningun niño no aparece ningun mensaje 
+            // como "> Lydia --->" esto sirve para que cuando ya no lleguen niños no se este mostrando Lydia y algo vacio
+            //Perdon Masias , se que no te gustan comentarios jaja, pero debia especificar esto
+            colaNiños.listaNiños();
+            System.out.println();
+        }
     }
 
     private void recibeNiño(Niño niño, Pizarra pizarrin) {

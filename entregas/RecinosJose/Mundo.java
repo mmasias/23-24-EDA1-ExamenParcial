@@ -19,18 +19,18 @@ class Mundo {
             if (minutoActual < 10) {
                 cantidadNinos = (int) (Math.random() * 3);
                 if (cantidadNinos == 0) {
-                    System.out.println("No llega nadie...");
+                    System.out.println("No ingresaron niños a la ludoteca :( ");
                 }
             } else if (minutoActual <= 30) {
                 if (Math.random() > 0.5) {
                     cantidadNinos = 1;
                 } else {
-                    System.out.println("No llega nadie...");
+                    System.out.println("No ingresaron niños a la ludoteca :(");
                 }
             }
 
             if (minutoActual > 30) {
-                System.out.println("No se admiten mas niños en la ludoteca...");
+                System.out.println("A la ludoteca no pueden ingresar mas niños");
             }
 
             for (int i = 0; i < cantidadNinos; i++) {
