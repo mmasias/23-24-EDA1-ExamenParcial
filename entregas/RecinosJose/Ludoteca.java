@@ -11,15 +11,19 @@ class Ludoteca {
 
     public void recibirNiño(Niño niño) {
         lydia.recibeNiño(niño);
-        if (lydia.tieneNiños() && !aisha.estaJugando()) {
-            lydia.entregaNiños(aisha);
-        }
     }
 
     public void actualizar() {
+        gestionarColas();
         if (aisha.puedeJugar()) {
             aisha.jugar();
         } 
+    }
+
+    private void gestionarColas() {
+        if (lydia.tieneNiños() && !aisha.estaJugando()) {
+            lydia.entregaNiños(aisha);
+        }        
     }
 
     public void verEstado(){

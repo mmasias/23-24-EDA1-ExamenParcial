@@ -1,3 +1,5 @@
+import java.util.Random;
+
 class Monitor {
     private String nombre;
     private Cola colaNiños;
@@ -27,7 +29,7 @@ class Monitor {
     }
 
     public void mostrarListaNiños() {
-        System.out.print("> " + this.nombre + " --> ");
+        System.out.print("> " + this.nombre + " ---> ");
         colaNiños.listaNiños();
         System.out.println();
     }
@@ -50,7 +52,7 @@ class Monitor {
             estaJugando = true;
             limpiarPizarrines();
             niñoTurno = colaNiños.getNiños().getFirst();
-            niñoTurno.getData().recibirMensaje("ABCDEFGHIJKLM");
+            niñoTurno.getData().recibirMensaje(generarMensajeAleatorio());
         } else {
             Node<Niño> niño = colaNiños.getNiños().getFirst();
             while (niño != niñoTurno) {
@@ -67,7 +69,25 @@ class Monitor {
             }
         }
     }
+    private String generarMensajeAleatorio() {
+        Random random = new Random();
+        String word = generarPalabraAleatorio(random);
 
+        while (word.length() <= 10) {
+            word = generarPalabraAleatorio(random);
+        }
+    
+        return word;
+    }
+
+    private String generarPalabraAleatorio(Random random) {
+        String words[] = {"aberrantes", "maravillosa", "fantástico", "espléndido", "extraordinario", "sorprendente", "increíble", "fabuloso", "formidable", "asombroso",
+                "excepcional", "impresionante", "incomparable", "indescriptible", "insólito", "espectacular", "deslumbrante", "deslumbrador", "inigualable",
+                "inimaginable", "sofisticado", "especialísimo", "inconcebible", "asombroso", "desconcertante", "desconcertador", "estupendo", "inolvidable",
+                "prodigioso", "excelente", "magnífico", "sensacional", "extrañamente", "asombroso", "formidable", "inolvidable", "sorprendentemente", "sensacional"};
+        int randomIndex = random.nextInt(words.length);
+        return words[randomIndex];
+    }
     private void limpiarPizarrines() {
         Node<Niño> niño = colaNiños.getNiños().getFirst();
         while (niño != null) {

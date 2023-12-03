@@ -13,10 +13,31 @@ class Mundo {
         for (int minutoActual = 0; minutoActual < tiempoTotal; minutoActual++) {
             System.out.println("=".repeat(30));
             System.out.println("Minuto "+minutoActual);
-            if (llegaNiño()) {
+            
+            int cantidadNinos = 0;
+
+            if (minutoActual < 10) {
+                cantidadNinos = (int) (Math.random() * 3);
+                if (cantidadNinos == 0) {
+                    System.out.println("No llega nadie...");
+                }
+            } else if (minutoActual <= 30) {
+                if (Math.random() > 0.5) {
+                    cantidadNinos = 1;
+                } else {
+                    System.out.println("No llega nadie...");
+                }
+            }
+
+            if (minutoActual > 30) {
+                System.out.println("No se admiten mas niños en la ludoteca...");
+            }
+
+            for (int i = 0; i < cantidadNinos; i++) {
                 Niño niño = generarNiño();
                 ludoteca.recibirNiño(niño);
             }
+
             ludoteca.actualizar();
             ludoteca.verEstado();
             try {
@@ -25,10 +46,6 @@ class Mundo {
                 e.printStackTrace();
             }
         }
-    }
-
-    private boolean llegaNiño() {
-        return Math.random() > 0.5;
     }
 
     private Niño generarNiño() {
