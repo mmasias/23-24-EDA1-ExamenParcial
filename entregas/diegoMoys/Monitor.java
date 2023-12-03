@@ -29,7 +29,7 @@ class Monitor {
     }
 
     public void mostrarListaNiños() {
-        System.out.print("> " + this.nombre + " --> ");
+        System.out.print("> " + this.nombre + " ---> ");
         colaNiños.listaNiños();
         System.out.println();
     }
@@ -76,13 +76,13 @@ class Monitor {
         while (word.length() <= 10) {
             word = generarPalabraAleatorio(random);
         }
-    
+
         return word;
     }
 
     private String generarPalabraAleatorio(Random random) {
         String words[] = {"escritura", "confianza", "actividad", "celebridad", "convocator", 
-                        "generosidad", "influencia", "observador", "proporcion", "television"};
+        "generosidad", "influencia", "observador", "proporcion", "television"};
         int randomIndex = random.nextInt(words.length);
         return words[randomIndex];
     }
