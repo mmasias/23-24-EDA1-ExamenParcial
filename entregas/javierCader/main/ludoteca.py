@@ -1,4 +1,4 @@
-from datastructures.queue import Queue
+from data_structures.queue import Queue
 from models.monitor import Monitor
 from models.kid import Kid
 from main.game import Game
@@ -19,18 +19,23 @@ class Ludoteca:
         return self.isOpen
     
     def employMonitors(self, monitors):
+        print(f"Monitors employed: {', '.join(monitor.name for monitor in monitors)}")
         self.monitors = monitors
 
+
     def manageKidsArrival(self, kid):
-        if not self.isOpen:
-            return
+        assert self.monitors is not None, "No monitors employed"
+        assert self.isOpen, "Ludoteca not open"
+        
         self.monitors[0].receiveAndOrganizeKids(kid) 
 
-    def runGameIfPossible(self):
-        if not self.isOpen:
-            return
+    def doWork(self):
+        assert self.monitors is not None, "No monitors employed"
+        assert self.isOpen, "Ludoteca not open"
+            
+        self.monitors[0].passKidsToNextMonitor(self.monitors[1])
 
-        self.monitors[1].manageGame(self.game, self.monitors[0].queue)  
+        self.monitors[1].manageGame(self.game)  
 
         if self.game.isRunning and self.monitors[1].queue.is_empty() and self.monitors[0].queue.is_empty():
             self.endGame()

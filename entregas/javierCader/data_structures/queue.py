@@ -21,5 +21,11 @@ class Queue:
     def size(self):
         return len(self._elements)
     
+    def to_iterable(self):
+        return self._elements
+    
+    def string_queue(self):
+        return '/'.join(str(element) for element in self._elements)
+    
     def __repr__(self):
         return f"Queue({self._elements})"

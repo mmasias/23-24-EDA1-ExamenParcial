@@ -8,6 +8,7 @@ class Game:
         self._setMessage(initialMessage)
         self.kidsQueue = queue
         self.isRunning = True
+        print(f"Game started with message: {initialMessage}")
 
     def continueGame(self):
         if self.kidsQueue.is_empty():

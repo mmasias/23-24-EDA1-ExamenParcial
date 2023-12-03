@@ -11,13 +11,15 @@ class App:
         self.monitorFactory = MonitorFactory()
 
     def run(self):
-        ludoteca_monitors = self.monitorFactory.createMonitors()
+        ludoteca_monitors = self.monitorFactory.createMonitors(2, ["Lydia", "Aisha"])
         self.ludoteca.employMonitors(ludoteca_monitors)
         self.ludoteca.open()
         
         while self.ludoteca.is_open():
+            print("=====================================")
+            print(f"Time: {self.time}")
             self.manageKidsArrival()
-            self.ludoteca.runGameIfPossible()
+            self.ludoteca.doWork()
             self.time += 1
             
             if self.time > self.maxTime:
