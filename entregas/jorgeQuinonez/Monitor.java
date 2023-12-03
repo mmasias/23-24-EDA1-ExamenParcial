@@ -48,10 +48,11 @@ public class Monitor {
    this.playing = true;
    this.cleanPizarras();
    this.currentKid = this.cola.getFirst();
+   System.out.println("mensaje");
    this.currentKid.recieveMessage("Los sobrinos de Lidia");
   } else {
    Niño iterator = this.cola.getFirst();
-   while (iterator != currentKid) {
+   if (iterator != currentKid) {
     iterator = iterator.getNext();
    }
    if (iterator.getNext() != null) {
@@ -69,7 +70,6 @@ public class Monitor {
  public void showKids() {
   System.out.println(" > " + this.getName() + " tiene en cola a: ");
   this.cola.listAll();
-  System.out.println("------------------------------------");
  }
 
  public boolean isPlaying() {
@@ -77,7 +77,7 @@ public class Monitor {
  }
 
  public boolean canPlay() {
-  return this.cola.size() > 5 ? true : false;
+  return this.cola.size() > 5;
  }
 
  public boolean hasKids() {

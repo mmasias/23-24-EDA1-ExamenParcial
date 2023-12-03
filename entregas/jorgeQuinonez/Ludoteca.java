@@ -15,7 +15,6 @@ public class Ludoteca {
 
  public void update() {
   if (lidia.hasKids() && !aisha.isPlaying()) {
-   System.out.println("give kid");
    lidia.giveKid(aisha);
   }
   if (aisha.canPlay()) {
@@ -24,7 +23,9 @@ public class Ludoteca {
  }
 
  public void printLists() {
-  lidia.showKids();
-  aisha.showKids();
+  if (!aisha.isPlaying()) {
+   lidia.showKids();
+   aisha.showKids();
+  }
  }
 }

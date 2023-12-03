@@ -1,6 +1,6 @@
 public class Pizarra {
 
- private String message;
+ private String message = "";
 
  public String getMessage() {
   return message;
@@ -11,7 +11,7 @@ public class Pizarra {
  }
 
  public void clear() {
-  this.message = null;
+  this.message = "";
  }
 
 }

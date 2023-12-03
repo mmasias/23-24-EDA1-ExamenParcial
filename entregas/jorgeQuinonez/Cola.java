@@ -40,12 +40,16 @@ public class Cola {
   }
 
   public void listAll() {
-    Niño iterator = this.first;
-    int count = 0;
-    while (iterator != null) {
-      count++;
-      System.out.println(count + ". " + iterator.getName());
-      iterator = iterator.getNext();
+    if (this.first == null) {
+      System.out.println(" > No hay niños en la cola");
+    } else {
+      Niño iterator = this.first;
+      int count = 0;
+      while (iterator != null) {
+        count++;
+        System.out.println(count + ". " + iterator.getName());
+        iterator = iterator.getNext();
+      }
     }
   }
 }
