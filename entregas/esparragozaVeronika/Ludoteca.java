@@ -1,70 +1,72 @@
-import java.util.Random;
-import java.util.Scanner;
-
 public class Ludoteca {
-    int horaInicio = 8;
-    int horaCierre = 10;
-    int cantidadNiñosMinimoDelJuego = 5;
-    int cantidadLetrasEnMensaje = 10;
+    private final int tiempoAbierta = 120;
+    private MonitorEntrada lydia;
+    private MonitorJuego aisha;
 
-    private final Scanner scanner = new Scanner(System.in);
-
-    public void inicioLudoteca() {
-        ColaNiños cola = new ColaNiños();
-        ColaNiños listaParalela = new ColaNiños();
-        Pizarra pizarra = new Pizarra();
-        Tiempo reloj = new Tiempo(horaInicio, 0);
-        System.out.println("La ludoteca está abierta");
-
-        boolean juegoEnCurso = true;
-
-        while (reloj.estaAbierto(horaInicio, horaCierre) && juegoEnCurso) {
-            System.out.println("Hora " + reloj.toString());
-            llegadaNiños(cola, reloj);
-            if (cola.getNiñosEnCola() >= cantidadNiñosMinimoDelJuego) {
-                System.out.println("Empieza a jugar");
-                new Monitor(cantidadLetrasEnMensaje, cola, pizarra).comenzarJuego();
-                juegoEnCurso = false;
-            } else {
-                Lydia(cola, listaParalela, reloj);
-            }
-            reloj.subeTiempo();
-        }
+    public static void main(String[] args) {
+        Ludoteca ludoteca = new Ludoteca();
+        ludoteca.inicioJornada();
     }
 
-    public void Lydia(ColaNiños cola, ColaNiños listaParalela, Tiempo reloj) {
-        llegadaNiños(cola, reloj);
-
-        if (cola.getNiñosEnCola() < 5) {
-            Niño niño = new Niño();
-            cola.addNiño(niño);
-            System.out.println("Hay un nuevo niño");
-        } else {
-            Niño niño = new Niño();
-            listaParalela.addNiño(niño);
-            System.out.println("Se ha añadido a una lista paralela");
-        }
+    public Ludoteca() {
+        lydia = new MonitorEntrada("Lydia");
+        aisha = new MonitorJuego("Aisha");
     }
 
-    public void llegadaNiños(ColaNiños cola, Tiempo reloj) {
-        if (reloj.getMinuto() <= 10) {
-            int cantidadLlegada = new Random().nextInt(3);
-            for (int i = 0; i < cantidadLlegada; i++) {
-                Niño niño = new Niño();
-                cola.addNiño(niño);
-                System.out.println("Llegó un nuevo niño a la cola");
+    public void inicioJornada() {
+        Juego juego = new Juego(aisha.getColaDeNiños());
+        while (juego.getTiempoJuego() < tiempoAbierta){
+            System.out.println(("=").repeat(50));
+            System.out.println(Color.ANSI_RED + "Minuto: " + juego.getTiempoJuego() + Color.ANSI_RESET);
+            estadoActual();
+
+            if (llegadaNiños(juego.getTiempoJuego()) != 0) {
+                Niño nuevoNiño = generarNiño();
+                lydia.recibeNiño(nuevoNiño, aisha);
             }
-        } else if (reloj.getMinuto() <= 30) {
-            int probabilidadLlegada = new Random().nextInt(2);
-            if (probabilidadLlegada == 0) {
-                Niño niño = new Niño();
-                cola.addNiño(niño);
-                System.out.println("Llegó un nuevo niño a la cola");
+
+            if (aisha.getColaDeNiños().size() >= 5) {
+                System.out.println(Color.ANSI_BLUE + "Se inicia el juego" + ("-").repeat(20) + Color.ANSI_RESET);
+                juego.jugar(juego.getTiempoJuego());
+            }
+
+            juego.setSubeTiempoJuego();
+        }
+
+        if (!juego.estaJugando()) {
+            while (lydia.getColaDeNiños().size() > 0) {
+                Niño niñoTransferido = lydia.getColaDeNiños().removeNiño();
+                aisha.recibeNiño(niñoTransferido);
             }
         }
+
+        System.out.println(Color.ANSI_BLUE + "La ludoteca ha cerrado" + Color.ANSI_RESET);
     }
 
-    public static void main(String args[]) {
-        new Ludoteca().inicioLudoteca();
+    private Niño generarNiño() {
+        String unNombre = inventarNombre();
+        System.out.println(Color.ANSI_RED + " > Llega " + unNombre + Color.ANSI_RESET);
+        return new Niño(unNombre);
+    }
+
+    private String inventarNombre() {
+        String nombres[] = { "Andrés Elías A.C.", "Pablo A.D.A.", "Diego Alejandro B.M.", "Aníbal B.G.", "Umut B.", "Javier Enrique C.S.", "Fernando William C.M.", "Pablo C.R.", "Cayetano C.R.", "Iker C.B.", "Mario D.R.M.", "Adrián D.Q.", "Paula Qing D.G.", "Veronika Alexandra E.M.", "Eduardo David E.R.", "Hugo F.N.", "Adrián G.A.", "David G.C.", "César G.E.", "Diego G.N.", "Miguel G.C.", "Santiago G.D.L.T.R.", "Juan René I.S.J.", "Pablo L.T.", "Daniel L.A.", "Álvaro L.S.", "Maura M.N.", "Neco M.S.", "Diego M.T.", "Sergio Alejandro M.R.", "Sergio M.V.", "Diego Fernando M.R.", "Aurelio Sebastián O.G.", "Jorge O.G.", "Raúl P.P.", "Adrián P.B.", "Daniel P.S.", "Jorge André Q.S.", "José Manuel R.P.", "José Manuel R.M.", "José Luis R.G.", "José S.C.", "Javier S.J.", "Óscar S.S.", "Rubén S.F.", "Gabriel Francisco S.P.", "Iñaki T.A.", "Alejandro V.P.", "Andriuw Xavier Y.Z.",  };
+        return nombres[(int) (Math.random() * nombres.length)];
+    }
+
+    public int llegadaNiños(int tiempoActual) {
+        if (tiempoActual <= 10) {
+            return (int) (Math.random() * 3);
+        } else if (tiempoActual <= 30) {
+            if (Math.random() < 0.5) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    private void estadoActual() {
+        lydia.mostrarCola(lydia.getNombre());
+        aisha.mostrarCola(aisha.getNombre());
     }
 }
