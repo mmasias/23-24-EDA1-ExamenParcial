@@ -1,4 +1,4 @@
-public class List {
+public class Cola {
 
   private Niño first = null;
   private int size = 0;
@@ -15,8 +15,8 @@ public class List {
     return this.first;
   }
 
-  public void insertEnd(String value) {
-    Niño lastKid = new Niño(value);
+  public void insertEnd(Niño kid) {
+    Niño lastKid = kid;
     if (this.first == null) {
       this.first = lastKid;
     } else {
@@ -29,32 +29,23 @@ public class List {
     this.size++;
   }
 
-  public void deleteLast() {
+  public void deleteStart() {
     if (this.first != null) {
-      Niño iterator = this.first;
-      Niño previous = null;
-      while (iterator.getNext() != null) {
-        previous = iterator;
-        iterator = iterator.getNext();
-      }
-      if (previous != null) {
-        previous.setNext(null);
-      } else {
-        this.first = null;
-      }
+      System.out.println(" > Se fue " + this.first.getName());
+      Niño nextKid = this.first.getNext();
+      this.first = null;
+      this.first = nextKid;
       this.size--;
     }
   }
 
-  public String[] listAll() {
-    String[] list = new String[this.size()];
+  public void listAll() {
     Niño iterator = this.first;
     int count = 0;
     while (iterator != null) {
-      list[count] = iterator.getValue();
       count++;
+      System.out.println(count + ". " + iterator.getName());
       iterator = iterator.getNext();
     }
-    return list;
   }
 }

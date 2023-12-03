@@ -1,8 +1,6 @@
-import java.util.List;
-
 public class Monitor {
  private String name;
- private List cola;
+ private Cola cola;
  private Pizarra pizarra;
  private Niño currentKid;
  private boolean playing;
@@ -10,7 +8,7 @@ public class Monitor {
 
  public Monitor(String name) {
   this.name = name;
-  this.cola = new List();
+  this.cola = new Cola();
   this.pizarra = new Pizarra();
   this.playing = false;
  }
@@ -29,10 +27,10 @@ public class Monitor {
  }
 
  public void giveKid(Monitor other) {
-  while (this.hasKids()) {
-   System.out.println(" >  " + this.getName() + " Entrega un niño a " + other.getName())
+  if (this.hasKids()) {
+   System.out.println(" >  " + this.getName() + " Entrega un niño a " + other.getName());
    Niño givenKid = this.cola.getFirst();
-   this.cola.deleteFirst();
+   this.cola.deleteStart();
    other.recieveKid(givenKid, new Pizarra());
   }
  }
@@ -57,10 +55,10 @@ public class Monitor {
     iterator = iterator.getNext();
    }
    if (iterator.getNext() != null) {
-    Niño actualKid = iterator
+    Niño actualKid = iterator;
     Niño nextKid = iterator.getNext();
     nextKid.recieveMessage(actualKid.showMessage());
-    this.currentKid = iterator
+    this.currentKid = iterator;
    } else {
     this.playing = false;
     this.currentKid = this.cola.getFirst();
@@ -69,7 +67,9 @@ public class Monitor {
  }
 
  public void showKids() {
-  System.out.println(this.name + " tiene " + this.cola.size() + " niños en cola: " + this.cola.listAll());
+  System.out.println(" > " + this.getName() + " tiene en cola a: ");
+  this.cola.listAll();
+  System.out.println("------------------------------------");
  }
 
  public boolean isPlaying() {
@@ -81,7 +81,6 @@ public class Monitor {
  }
 
  public boolean hasKids() {
-  return !this.cola.isEmpty()
+  return !this.cola.isEmpty();
  }
-
 }
