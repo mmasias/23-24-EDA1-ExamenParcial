@@ -21,7 +21,7 @@ El ritmo de llegada de los niños es como sigue: durante los primeros 10 minutos
 
 Cuando está en curso un juego pueden seguir llegando niños, pero se quedan con Lidia quien los sienta y no los pasa a cola sino hasta que termina el juego actual.
 
-El tiempo que tarda un niño en leer el mensaje y anotarlo en su pizarra es de 1 minuto. Lo mismo al inicio (el tiempo de Sara) y al final (el tiempo que le toma al último niño el ir a la pizarra y escribirlo).
+El tiempo que tarda un niño en leer el mensaje y anotarlo en su pizarra es de 1 minuto. Lo mismo al inicio (el tiempo de Aisha) y al final (el tiempo que le toma al último niño el ir a la pizarra y escribirlo).
 
 ## Retos
 
