@@ -1,0 +1,27 @@
+@startuml
+
+class JuegoLudoteca2 {
+    +main(String[] args) : void
+}
+
+class Nino {
+    -nombre : String
+    -mensaje : String
+    +Nino(String nombre)
+    +recibirYModificarMensaje(String mensaje) : void
+}
+
+class Ludoteca {
+    -fila : List<Nino>
+    -mensajeOriginal : String
+    -indiceActual : int
+    -juegoEnCurso : boolean
+    +agregarNino(Nino nino) : void
+    +procesarJuego(int minutoActual) : void
+}
+
+JuegoLudoteca2 ..> Nino
+JuegoLudoteca2 ..> Ludoteca
+Ludoteca "1" -- "*" Nino
+
+@enduml
